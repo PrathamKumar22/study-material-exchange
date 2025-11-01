@@ -1,0 +1,102 @@
+.upload-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to bottom right, #f1f5f9, #c7d2fe);
+  padding: 2rem;
+  font-family: "Segoe UI", sans-serif;
+  position: relative;
+}
+
+.upload-back {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  background: none;
+  color: #1e3a8a;
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+  text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.1);
+}
+
+.upload-back:hover {
+  color: #4f46e5;
+  transform: scale(1.05);
+}
+
+.upload-form {
+  background: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+  border: 1px solid #e5e7eb;
+}
+
+.upload-heading {
+  text-align: center;
+  color: #1e3a8a;
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.upload-field {
+  margin-bottom: 1.25rem;
+}
+
+.upload-label {
+  display: block;
+  font-size: 0.95rem;
+  color: #334155;
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+}
+
+.upload-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #cbd5e1;
+  background-color: #f8fafc;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.upload-input:focus {
+  border-color: #3b82f6;
+}
+
+.upload-input-file {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid #cbd5e1;
+  background-color: #f8fafc;
+  font-size: 1rem;
+}
+
+.upload-button {
+  width: 100%;
+  padding: 0.9rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  background-color: #3b82f6;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.upload-button:hover {
+  background-color: #2563eb;
+}

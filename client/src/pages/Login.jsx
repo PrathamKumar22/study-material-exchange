@@ -16,7 +16,7 @@ function Login() {
     e.preventDefault();
     setError("");
     try {
-      const res = await axios.post("http://study-material-exchange.onrender.com/api/users/login", formData);
+      const res = await axios.post("https://study-material-exchange.onrender.com/api/users/login", formData);
       localStorage.setItem("user", JSON.stringify(res.data.user));
       navigate("/");
     } catch (err) {

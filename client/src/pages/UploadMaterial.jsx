@@ -36,7 +36,7 @@ function UploadMaterial() {
     data.append("file", formData.file);
 
     try {
-      await axios.post("http://localhost:5000/api/materials/upload", data);
+      await axios.post("http://study-material-exchange.onrender.com/api/materials/upload", data);
       navigate("/");
     } catch (err) {
       alert("Upload failed. Please try again.");

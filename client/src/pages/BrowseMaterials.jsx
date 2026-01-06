@@ -12,7 +12,7 @@ export default function BrowseMaterials() {
 
   const fetchMaterials = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/materials");
+      const res = await axios.get("http://study-material-exchange.onrender.com/api/materials");
       setMaterials(res.data);
     } catch (err) {
       console.error("Failed to fetch materials", err);
@@ -63,7 +63,7 @@ export default function BrowseMaterials() {
               </div>
 
               <a
-                href={`http://localhost:5000${fileUrl}`}
+                href={`http://study-material-exchange.onrender.com${fileUrl}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="view-btn"

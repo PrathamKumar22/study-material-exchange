@@ -16,7 +16,7 @@ function Register() {
     e.preventDefault();
     setError("");
     try {
-      await axios.post("http://localhost:5000/api/users/register", formData);
+      await axios.post("http://study-material-exchange.onrender.com/api/users/register", formData);
       navigate("/login");
     } catch (err) {
       setError(err.response?.data?.message || "Registration failed");

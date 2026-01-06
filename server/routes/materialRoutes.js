@@ -4,38 +4,62 @@ import Material from "../models/material.js";
 
 const router = express.Router();
 
-// 🗂️ Configure multer storage
+// 🗂️ Multer storage config
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "uploads/"); // files saved to /uploads
+    cb(null, "uploads/");
   },
   filename: (req, file, cb) => {
     cb(null, `${Date.now()}-${file.originalname}`);
   }
 });
 
-const upload = multer({ storage });
+// ✅ Multer upload with file size limit (5MB)
+const upload = multer({
+  storage,
+  limits: {
+    fileSize: 5 * 1024 * 1024 // 5 MB
+  }
+});
 
-// 📤 Upload Route
+// 📤 UPLOAD STUDY MATERIAL
 router.post("/upload", upload.single("file"), async (req, res) => {
-  const { title, subject, uploadedBy } = req.body;
-  const fileUrl = `/uploads/${req.file.filename}`;
-
   try {
-    const newMaterial = new Material({ title, subject, uploadedBy, fileUrl });
+    // 🔴 IMPORTANT CHECK
+    if (!req.file) {
+      return res.status(400).json({ message: "No file uploaded" });
+    }
+
+    const { title, subject, uploadedBy } = req.body;
+
+    const fileUrl = `/uploads/${req.file.filename}`;
+
+    const newMaterial = new Material({
+      title,
+      subject,
+      uploadedBy,
+      fileUrl
+    });
+
     await newMaterial.save();
-    res.status(201).json({ message: "File uploaded", material: newMaterial });
-  } catch (err) {
+
+    res.status(201).json({
+      message: "File uploaded successfully",
+      material: newMaterial
+    });
+
+  } catch (error) {
+    console.error("UPLOAD ERROR:", error);
     res.status(500).json({ message: "Upload failed" });
   }
 });
 
-// ✅ 📄 GET Route for all study materials
+// 📄 GET ALL MATERIALS
 router.get("/", async (req, res) => {
   try {
     const materials = await Material.find();
     res.json(materials);
-  } catch (err) {
+  } catch (error) {
     res.status(500).json({ message: "Failed to fetch materials" });
   }
 });
